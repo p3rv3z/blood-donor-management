@@ -1996,29 +1996,42 @@ var Login = function Login() {
   return __webpack_require__.e(/*! import() | Login */ "Login").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/auth/Login.vue */ "./resources/js/pages/auth/Login.vue"));
 };
 
-var Home = function Home() {
-  return __webpack_require__.e(/*! import() | Home */ "Home").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/admin/Home.vue */ "./resources/js/pages/admin/Home.vue"));
+var AppLayout = function AppLayout() {
+  return __webpack_require__.e(/*! import() | Admin */ "Admin").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/App/Layout */ "./resources/js/pages/App/Layout.vue"));
+};
+
+var AppDashboard = function AppDashboard() {
+  return __webpack_require__.e(/*! import() | Dashboard */ "Dashboard").then(__webpack_require__.bind(__webpack_require__, /*! ./components/App/Dashboard.vue */ "./resources/js/components/App/Dashboard.vue"));
+};
+
+var DonersIndex = function DonersIndex() {
+  return __webpack_require__.e(/*! import() | DonersIndex */ "DonersIndex").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Doners/Index.vue */ "./resources/js/components/Doners/Index.vue"));
 };
 
 vue__WEBPACK_IMPORTED_MODULE_1__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_2__.default);
-var routes = [// {
-//   path: '/dashboard',
-//   redirect: 'dashboard/login'
-// },
-{
-  path: '/dashboard/login',
+var routes = [{
+  path: '/app/login',
   component: Login,
   name: 'login',
   meta: {
     guest: true
   }
 }, {
-  path: '/dashboard/home',
-  component: Home,
-  name: 'home',
+  path: '/app',
+  component: AppLayout,
+  name: 'app.layout',
   meta: {
     requiresAuth: true
-  }
+  },
+  children: [{
+    path: 'dashboard',
+    component: AppDashboard,
+    name: 'app.dashboard'
+  }, {
+    path: 'doners',
+    component: DonersIndex,
+    name: 'doners.index'
+  }]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
   mode: 'history',
@@ -2035,7 +2048,7 @@ router.beforeEach(function (to, from, next) {
     return record.meta.guest;
   })) {
     if (!_store__WEBPACK_IMPORTED_MODULE_0__.default.getters["auth/isAuthenticated"]) next();else next({
-      name: 'home'
+      name: 'app.dashboard'
     });
   } else {
     next();
@@ -83151,8 +83164,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "Login") return "js/" + chunkId + ".js";
-/******/ 			if (chunkId === "Home") return "js/Home.js";
+/******/ 			if ({"Login":1,"Admin":1,"Dashboard":1,"DonersIndex":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

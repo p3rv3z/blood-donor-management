@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['middleware' => 'auth:sanctum'], function() {
 
-Route::middleware('auth:sanctum')->get('/auth/user', function (Request $request) {
+  Route::get('/auth/user', function (Request $request) {
     return $request->user();
+  });
+
 });
-
-Route::post('/tokens/create', function () {
-  $token = request()->user()->createToken(request()->token_name);
-
-  return ['token' => $token->plainTextToken];
-})->middleware('auth:sanctum');

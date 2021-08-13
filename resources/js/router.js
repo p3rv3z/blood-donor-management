@@ -2,29 +2,39 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store'
 const Login = () =>import(/* webpackChunkName:  "Login"*/ './pages/auth/Login.vue')
-const Home = () =>import(/* webpackChunkName:  "Home"*/ './pages/admin/Home.vue')
+const AppLayout = () =>import(/* webpackChunkName:  "Admin"*/ './pages/App/Layout')
+const AppDashboard = () =>import(/* webpackChunkName:  "Dashboard"*/ './components/App/Dashboard.vue')
+const DonersIndex = () =>import(/* webpackChunkName:  "DonersIndex"*/ './components/Doners/Index.vue')
 
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/dashboard',
-  //   redirect: 'dashboard/login'
-  // },
 
   {
-    path: '/dashboard/login',
+    path: '/app/login',
     component: Login,
     name: 'login',
     meta: { guest: true }
   },
 
   {
-    path: '/dashboard/home',
-    component: Home,
-    name: 'home',
-    meta: { requiresAuth: true }
+    path: '/app',
+    component: AppLayout,
+    name: 'app.layout',
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: 'dashboard',
+        component: AppDashboard,
+        name: 'app.dashboard',
+      },
+      {
+        path: 'doners',
+        component: DonersIndex,
+        name: 'doners.index',
+      }
+    ]
   },
 ]
 
@@ -42,7 +52,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.matched.some(record => record.meta.guest)) {
 
     if (!store.getters["auth/isAuthenticated"]) next()
-    else next({ name: 'home' })
+    else next({ name: 'app.dashboard' })
 
   } else {
     next();

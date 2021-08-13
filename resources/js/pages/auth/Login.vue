@@ -11,6 +11,7 @@
               <v-card-text>
                 <v-form ref="form" v-model="valid">
                   <v-text-field
+                    color="green"
                     prepend-icon="mdi-email"
                     label="E-mail"
                     v-model="form.email"
@@ -18,6 +19,7 @@
                     required
                   ></v-text-field>
                   <v-text-field
+                    color="green"
                     prepend-icon="mdi-lock"
                     label="Password"
                     type="password"
@@ -103,7 +105,7 @@ export default {
         const authUser = await this.$store.dispatch("auth/getAuthUser");
 
         if (authUser) {
-          this.$router.push({ name: "home" })
+          this.$router.push({ name: "app.dashboard" })
         } else {
           this.snackbar.status = true
           this.snackbar.text = "Unable to fetch user after login, please check your API settings."

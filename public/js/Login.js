@@ -81,6 +81,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -133,7 +135,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (authUser) {
                   _this.$router.push({
-                    name: "home"
+                    name: "app.dashboard"
                   });
                 } else {
                   _this.snackbar.status = true;
@@ -298,6 +300,7 @@ var render = function() {
                                 [
                                   _c("v-text-field", {
                                     attrs: {
+                                      color: "green",
                                       "prepend-icon": "mdi-email",
                                       label: "E-mail",
                                       rules: _vm.rules.email,
@@ -314,6 +317,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("v-text-field", {
                                     attrs: {
+                                      color: "green",
                                       "prepend-icon": "mdi-lock",
                                       label: "Password",
                                       type: "password",

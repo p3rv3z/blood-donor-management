@@ -12,7 +12,7 @@
         <v-list-item link>
           <v-list-item-content>
             <v-list-item-title class="text-h6">
-              {{ authUser.name }}
+              Jhon Doe
             </v-list-item-title>
             <v-list-item-subtitle> {{ authUser.email }} </v-list-item-subtitle>
           </v-list-item-content>
@@ -25,7 +25,7 @@
       <v-divider></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="selectedItem" color="primary">
-          <v-list-item v-for="(item, i) in items" :key="i">
+          <v-list-item v-for="(item, i) in items" :to="{name: item.action}" :key="i">
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
@@ -50,11 +50,11 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title >Urkirchar Blood Bank</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
-      <!--  -->
+      <router-view />
     </v-main>
 
     <v-snackbar v-model="snackbar.status">
@@ -80,13 +80,8 @@ export default {
     selectedItem: 0,
 
     items: [
-      { text: "My Files", icon: "mdi-folder" },
-      { text: "Shared with me", icon: "mdi-account-multiple" },
-      { text: "Starred", icon: "mdi-star" },
-      { text: "Recent", icon: "mdi-history" },
-      { text: "Offline", icon: "mdi-check-circle" },
-      { text: "Uploads", icon: "mdi-upload" },
-      { text: "Backup", icon: "mdi-cloud-upload" },
+      { text: "Dashboard", icon: "mdi-view-dashboard", action: "app.dashboard"},
+      { text: "Doners", icon: "mdi-account-multiple", action: "doners.index"},
     ],
 
     snackbar: {

@@ -3,12 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function() {
-  return "Hello";
-});
+Route::view('/', 'visitor.home');
 
 Route::get(
-  '/dashboard/{any?}',
+  '/app/{any?}',
   function () {
     return view('admin.home');
   }
