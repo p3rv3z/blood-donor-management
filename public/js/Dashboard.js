@@ -114,9 +114,8 @@ var render = function() {
     [
       _c(
         "v-container",
-        { attrs: { "grid-list-xs": "" } },
         [
-          _c("v-alert", { attrs: { type: "primary", value: true } }, [
+          _c("v-alert", { attrs: { color: "primary" } }, [
             _vm._v("\n      Welcome to Dashboard\n    ")
           ])
         ],

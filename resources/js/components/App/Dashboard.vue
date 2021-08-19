@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-container grid-list-xs>
-      <v-alert type="primary" :value="true">
+    <v-container>
+      <v-alert color="primary">
         Welcome to Dashboard
       </v-alert>
     </v-container>

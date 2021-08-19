@@ -4,7 +4,7 @@ export default {
     return axios.post("/login", payload);
   },
   getAuthUser() {
-    return axios.get("/api/auth/user");
+    return axios.get("/api/users/auth");
   },
   logout() {
     return axios.post("/logout");

@@ -2099,7 +2099,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   getAuthUser: function getAuthUser() {
-    return axios.get("/api/auth/user");
+    return axios.get("/api/users/auth");
   },
   logout: function logout() {
     return axios.post("/logout");
@@ -2189,7 +2189,7 @@ var actions = {
 
             case 4:
               response = _context.sent;
-              commit("SET_USER", response.data);
+              commit("SET_USER", response.data.data);
               return _context.abrupt("return", !!response.data);
 
             case 9:

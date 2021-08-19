@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BloodGroupController;
+use App\Http\Controllers\Api\DonerController;
+use App\Http\Controllers\Api\LocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,21 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['middleware' => 'auth:sanctum'], function() {
 
-  Route::get('/auth/user', function (Request $request) {
-    return $request->user();
-  });
+Route::group(['middleware' => 'auth:sanctum'], function () {
 
+  Route::get('/users/auth', AuthController::class);
+
+  Route::apiResource('doners', DonerController::class);
+
+  Route::apiResource('locations', LocationController::class);
+
+  Route::apiResource('blood-groups', BloodGroupController::class)->only(['index', 'show']);
+});
+
+
+Route::get('test', function () {
+  return [
+    "message" => "test"
+  ];
 });

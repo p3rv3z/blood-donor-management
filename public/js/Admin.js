@@ -290,7 +290,11 @@ var render = function() {
                         "v-list-item-content",
                         [
                           _c("v-list-item-title", { staticClass: "text-h6" }, [
-                            _vm._v("\n            Jhon Doe\n          ")
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(_vm.authUser.name) +
+                                "\n          "
+                            )
                           ]),
                           _vm._v(" "),
                           _c("v-list-item-subtitle", [
