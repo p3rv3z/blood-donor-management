@@ -16,7 +16,7 @@ export const actions = {
   async getAuthUser({ commit }) {
     try {
       const response = await AuthService.getAuthUser();
-      commit("SET_USER", response.data.data);
+      commit("SET_USER", response.data);
       return !! response.data;
     } catch (error) {
       commit("SET_USER", null);

@@ -2189,7 +2189,7 @@ var actions = {
 
             case 4:
               response = _context.sent;
-              commit("SET_USER", response.data.data);
+              commit("SET_USER", response.data);
               return _context.abrupt("return", !!response.data);
 
             case 9:
